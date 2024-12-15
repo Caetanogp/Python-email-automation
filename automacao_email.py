@@ -1,4 +1,4 @@
-# Importação das bibliotecas necessárias
+
 import pandas as pd                    
 import matplotlib.pyplot as plt         
 from fpdf import FPDF                   
