@@ -11,48 +11,50 @@ def generate_report():
         'Sales': [100, 200, 150, 300, 250]
     }
     df = pd.DataFrame(data)
-    
-    plt.figure(figsize=(8, 5))
+
+    plt.figure(figsize=(15, 10))
     plt.bar(df['Day'], df['Sales'], color='skyblue')
-    plt.title('Sales Report')
-    plt.xlabel('Day')
-    plt.ylabel('Sales')
-    plt.savefig('report_chart.png')
-    
+    plt.title('Sales Report', fontsize=24)
+    plt.xlabel('Day', fontsize=26)
+    plt.ylabel('Sales', fontsize=26)
+    plt.xticks(fontsize=22)
+    plt.yticks(fontsize=22)
+    plt.savefig('report_chart.png', bbox_inches='tight')
+
     pdf = FPDF()
     pdf.add_page()
     pdf.set_font("Arial", size=12)
-    
+
     pdf.cell(200, 10, txt="Weekly Sales Report", ln=True, align='C')
     pdf.ln(10)
-    
+
     for i, row in df.iterrows():
-        pdf.cell(200, 10, txt=f"{row['Day']}: {row['Sales']} sales", ln=True)
-    
-    pdf.image('report_chart.png', x=60, y=60, w=90)
+        pdf.cell(0, 10, txt=f"{row['Day']}: {row['Sales']} sales", ln=True, align='L')
+
+    pdf.image('report_chart.png', x=55, y=30, w=140)
     pdf.output("report.pdf")
-    
+
     os.remove('report_chart.png')
 
 def send_email():
     EMAIL_USER = "youremail@gmail.com"
     EMAIL_PASSWORD = "yourpassword"
     RECIPIENT = "youremail@gmail.com"
-    
+
     msg = EmailMessage()
     msg['Subject'] = "Daily Sales Report"
     msg['From'] = EMAIL_USER
     msg['To'] = RECIPIENT
     msg.set_content("Attached is the daily sales report.")
-    
+
     msg["X-Priority"] = "1"
     msg["X-MSMail-Priority"] = "High"
-    
+
     with open("report.pdf", "rb") as f:
         file_data = f.read()
         file_name = "report.pdf"
     msg.add_attachment(file_data, maintype="application", subtype="pdf", filename=file_name)
-    
+
     try:
         with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
             smtp.login(EMAIL_USER, EMAIL_PASSWORD)
@@ -64,6 +66,7 @@ def send_email():
 if __name__ == "__main__":
     generate_report()
     send_email()
+
 """
 =======================================
 # Explanation about the use of app passwords
