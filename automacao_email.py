@@ -64,3 +64,18 @@ def send_email():
 if __name__ == "__main__":
     generate_report()
     send_email()
+=======================================
+# Explanation about the use of app passwords
+=======================================
+
+- **Why use an app password?**
+  Gmail requires a specific app password when using the SMTP protocol to send emails. 
+  This is necessary **only when two-factor authentication (2FA)** is **enabled** for your Gmail account.
+
+- **When is the app password NOT required?**
+  If two-factor authentication is **disabled**, you can use the main password of your Gmail account. 
+  However, Google may block access because it considers this procedure "less secure."
+
+- **Recommendation:**
+  Keep **two-factor authentication enabled** and use a **unique app password** specifically for sending emails via SMTP. 
+  This ensures additional security for your Gmail account.
