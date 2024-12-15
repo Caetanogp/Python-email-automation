@@ -95,7 +95,7 @@ def enviar_email():
   Isso garante segurança adicional à conta do Gmail.
 """
 
-# 3. Execução do Script Principal
+
 if __name__ == "__main__":
-    gerar_relatorio()  # Chama a função para gerar o relatório
-    enviar_email()  # Chama a função para enviar o e-mail
+    gerar_relatorio()  
+    enviar_email()  
