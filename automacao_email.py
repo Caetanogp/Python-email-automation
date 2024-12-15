@@ -64,6 +64,7 @@ def send_email():
 if __name__ == "__main__":
     generate_report()
     send_email()
+"""
 =======================================
 # Explanation about the use of app passwords
 =======================================
@@ -79,3 +80,4 @@ if __name__ == "__main__":
 - **Recommendation:**
   Keep **two-factor authentication enabled** and use a **unique app password** specifically for sending emails via SMTP. 
   This ensures additional security for your Gmail account.
+"""
